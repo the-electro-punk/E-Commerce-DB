@@ -22,6 +22,15 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.findOne({
+    // finds data based on id parameter
+    where: {
+      id: req.params.id
+    },
+    include: [Category]
+  }).then((response) => {
+    res.json(response)
+  })
 });
 
 // create new product
@@ -34,6 +43,16 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
+    Product.create({
+      product_name: "Basketball",
+      price: 200.00,
+      stock: 3,
+      tagIds: [1, 2, 3, 4]
+    })
+    .then((newProduct) => {
+      res.json(newProduct)
+    })
+
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
