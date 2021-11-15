@@ -33,13 +33,28 @@ router.post('/', (req, res) => {
     res.json(newCategory)
   })
 });
-
+//  using '/:id' alters data based on id
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  // only use req.body when there's user input (we're sending info in)
+  Category.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  }).then((response)=> {
+    res.json(response)
+  })
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then((response)=> {
+    res.json(response)
+  })
 });
 
 module.exports = router;
