@@ -16,7 +16,7 @@ const sequelize = require('./config/connection')
 //   // port: '3001',
 // })
 
-// this connects to mysql and creates a database
+// // this connects to mysql and creates a database
 // connection.connect(function(err) {
 //   if (err) throw err;
 //   console.log('connected');
@@ -26,6 +26,7 @@ const sequelize = require('./config/connection')
 //   })
 // })
 
+// this was code from a previous challenge in an attempt to insert data into the table
 // connection.query(`INSERT INTO ${tableName}(ID, Employee, Position, Department) VALUES (${empID},'${nameEmp}','${position}','${department}')`, (err,rows) => {
 //   if(err) {
 //       throw err
